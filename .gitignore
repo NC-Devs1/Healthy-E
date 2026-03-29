@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+nul
+temporary screenshots/
+screenshot.mjs
+*.log

@@ -1,0 +1,13 @@
+{
+  "name": "healthy-e-society",
+  "version": "1.0.0",
+  "description": "Healthy-E Society landing page",
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "screenshot": "node screenshot.mjs http://localhost:3000"
+  },
+  "dependencies": {
+    "puppeteer": "^24.15.0"
+  }
+}

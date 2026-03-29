@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthy-E Society — Your Wellness Journey Starts Here</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            teal:    { DEFAULT: '#00B9B4', dark: '#008F8B', light: '#33C9C4', faint: '#E6FAF9' },
+            gold:    { DEFAULT: '#C9A84C', light: '#E2C97E', dark: '#A6862E', faint: '#FBF6E9' },
+            orange:  { DEFAULT: '#F45F5F', dark: '#D94444', light: '#F78080', faint: '#FEF0F0' },
+            purple:  { DEFAULT: '#8F47F4', dark: '#7231D9', light: '#AB72F7', faint: '#F3EDFE' },
+            navy:    { DEFAULT: '#0D2B2B', mid: '#143838', light: '#1E4F4F' },
+            pearl:   { DEFAULT: '#F5F5F0', warm: '#FAFAF6' },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans:    ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            tight2: '-0.03em',
+            tight3: '-0.04em',
+          },
+          lineHeight: {
+            body: '1.75',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; background: #F5F5F0; color: #0D2B2B; -webkit-font-smoothing: antialiased; }
+
+    /* ── Grain texture ── */
+    .grain::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    /* ── Typography ── */
+    .heading-xl  { font-family: 'Playfair Display', serif; font-weight: 900; letter-spacing: -0.04em; line-height: 1.0; }
+    .heading-lg  { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+    .heading-md  { font-family: 'Playfair Display', serif; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+    .body-copy   { line-height: 1.75; font-weight: 300; }
+
+    /* ── Hero gradient background ── */
+    .hero-bg {
+      background: #0D2B2B;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 15% 30%, rgba(0,185,180,0.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 70%, rgba(201,168,76,0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 100%, rgba(143,71,244,0.10) 0%, transparent 50%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* ── Section tints ── */
+    .section-pearl  { background: #F5F5F0; }
+    .section-faint  { background: #E6FAF9; }
+    .section-navy   { background: #0D2B2B; }
+    .section-warm   { background: #FAFAF6; }
+
+    /* ── Cards ── */
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      border: 1px solid rgba(0,185,180,0.12);
+      box-shadow: 0 2px 6px rgba(13,43,43,0.04), 0 8px 32px rgba(13,43,43,0.06);
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,185,180,0.12), 0 24px 64px rgba(13,43,43,0.10);
+    }
+    .card-dark {
+      background: #143838;
+      border-radius: 20px;
+      border: 1px solid rgba(0,185,180,0.18);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.20), 0 12px 40px rgba(0,0,0,0.25);
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
+    }
+    .card-dark:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,185,180,0.18), 0 24px 64px rgba(0,0,0,0.30);
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      background: #00B9B4;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      border-radius: 999px;
+      padding: 14px 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 16px rgba(0,185,180,0.35), 0 1px 3px rgba(0,185,180,0.2);
+      transition: background 0.2s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-primary:hover  { background: #008F8B; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,185,180,0.45), 0 2px 6px rgba(0,185,180,0.25); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:focus-visible { outline: 3px solid rgba(0,185,180,0.6); outline-offset: 3px; }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #C9A84C 0%, #E2C97E 50%, #C9A84C 100%);
+      color: #0D2B2B;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      border-radius: 999px;
+      padding: 14px 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.40), 0 1px 4px rgba(201,168,76,0.25);
+      transition: opacity 0.2s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    .btn-gold:hover  { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.50); }
+    .btn-gold:active { transform: translateY(0); }
+    .btn-gold:focus-visible { outline: 3px solid rgba(201,168,76,0.6); outline-offset: 3px; }
+
+    .btn-ghost {
+      background: transparent;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      border-radius: 999px;
+      padding: 13px 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.18s cubic-bezier(0.34,1.56,0.64,1);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-ghost:hover  { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+    .btn-ghost:active { transform: translateY(0); }
+    .btn-ghost:focus-visible { outline: 3px solid rgba(255,255,255,0.5); outline-offset: 3px; }
+
+    /* ── Nav link ── */
+    .nav-link {
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: color 0.18s ease;
+      letter-spacing: 0.02em;
+    }
+    .nav-link:hover { color: #fff; }
+    .nav-link:focus-visible { outline: 2px solid rgba(0,185,180,0.7); outline-offset: 3px; border-radius: 4px; }
+
+    /* ── Stat number ── */
+    .stat-num { font-family: 'Playfair Display', serif; font-weight: 900; letter-spacing: -0.03em; }
+
+    /* ── Icon wrapper ── */
+    .icon-wrap {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Step connector line ── */
+    .step-line {
+      position: absolute;
+      top: 26px; left: calc(50% + 26px);
+      width: calc(100% - 52px);
+      height: 2px;
+      background: linear-gradient(90deg, #00B9B4 0%, rgba(0,185,180,0.15) 100%);
+    }
+
+    /* ── Pill badge ── */
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Testimonial card ── */
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 20px;
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      padding: 28px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .testimonial-card:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(0,185,180,0.30);
+    }
+
+    /* ── Input ── */
+    .input-field {
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.20);
+      color: #fff;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .input-field::placeholder { color: rgba(255,255,255,0.45); }
+    .input-field:focus { border-color: rgba(0,185,180,0.7); background: rgba(255,255,255,0.12); }
+    /* Light-bg variant — join form input sits on a pearl background */
+    .input-field-light::placeholder { color: rgba(13,43,43,0.38); }
+
+    /* ── Mobile menu ── */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* ── Scroll fade-in ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Elegant floating shapes (ported from framer-motion ElegantShape) ── */
+    /* One keyframe per shape — CSS can't interpolate rotate(var()) between frames */
+    @keyframes shapeEntry1 {
+      0%   { opacity: 0; transform: translateY(-150px) rotate(-3deg);  }
+      50%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0px)    rotate(12deg);  }
+    }
+    @keyframes shapeEntry2 {
+      0%   { opacity: 0; transform: translateY(-150px) rotate(-30deg); }
+      50%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0px)    rotate(-15deg); }
+    }
+    @keyframes shapeEntry3 {
+      0%   { opacity: 0; transform: translateY(-150px) rotate(-23deg); }
+      50%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0px)    rotate(-8deg);  }
+    }
+    @keyframes shapeEntry4 {
+      0%   { opacity: 0; transform: translateY(-150px) rotate(5deg);   }
+      50%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0px)    rotate(20deg);  }
+    }
+    @keyframes shapeEntry5 {
+      0%   { opacity: 0; transform: translateY(-150px) rotate(-40deg); }
+      50%  { opacity: 1; }
+      100% { opacity: 1; transform: translateY(0px)    rotate(-25deg); }
+    }
+    @keyframes shapeFloat {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(15px); }
+    }
+    .es-wrap {
+      position: absolute;
+      will-change: transform, opacity;
+      /* timing shared; animation-name set per shape */
+      animation-duration: 2.4s;
+      animation-timing-function: cubic-bezier(0.23, 0.86, 0.39, 0.96);
+      animation-fill-mode: both;
+    }
+    .es-inner {
+      position: relative;
+      will-change: transform;
+      /* --shape-delay is set on parent .es-shape-N and inherited here */
+      animation: shapeFloat 12s ease-in-out var(--shape-delay, 0s) infinite;
+    }
+    .es-pill {
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.08);
+      -webkit-backdrop-filter: blur(2px);
+      backdrop-filter: blur(2px);
+    }
+    .es-pill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.18), transparent 70%);
+    }
+
+    /* Per-shape positions, sizes, delays & gradients */
+    .es-shape-1           { left:-5%;  top:20%;    --shape-delay:0.3s; animation-name:shapeEntry1; animation-delay:0.3s; }
+    .es-shape-1 .es-inner { width:600px; height:140px; }
+    .es-shape-1 .es-pill  { background:linear-gradient(to right, rgba(0,185,180,0.18),  transparent); }
+
+    .es-shape-2           { right:0%;  top:72%;    --shape-delay:0.5s; animation-name:shapeEntry2; animation-delay:0.5s; }
+    .es-shape-2 .es-inner { width:500px; height:120px; }
+    .es-shape-2 .es-pill  { background:linear-gradient(to right, rgba(201,168,76,0.18), transparent); }
+
+    .es-shape-3           { left:10%;  bottom:10%; --shape-delay:0.4s; animation-name:shapeEntry3; animation-delay:0.4s; }
+    .es-shape-3 .es-inner { width:300px; height:80px; }
+    .es-shape-3 .es-pill  { background:linear-gradient(to right, rgba(143,71,244,0.15), transparent); }
+
+    .es-shape-4           { right:20%; top:14%;    --shape-delay:0.6s; animation-name:shapeEntry4; animation-delay:0.6s; }
+    .es-shape-4 .es-inner { width:200px; height:60px; }
+    .es-shape-4 .es-pill  { background:linear-gradient(to right, rgba(244,95,95,0.14),  transparent); }
+
+    .es-shape-5           { left:25%;  top:8%;     --shape-delay:0.7s; animation-name:shapeEntry5; animation-delay:0.7s; }
+    .es-shape-5 .es-inner { width:150px; height:40px; }
+    .es-shape-5 .es-pill  { background:linear-gradient(to right, rgba(0,185,180,0.12),  transparent); }
+
+    .es-shapes-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── Divider ── */
+    .divider-gold { height: 3px; width: 56px; background: linear-gradient(90deg, #C9A84C, #E2C97E, transparent); border-radius: 2px; }
+    .divider-teal { height: 3px; width: 56px; background: linear-gradient(90deg, #00B9B4, rgba(0,185,180,0.1)); border-radius: 2px; }
+
+    /* ── Floating orbs ── */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════ -->
+<header class="hero-bg sticky top-0 z-50" style="border-bottom:1px solid rgba(0,185,180,0.12);">
+  <nav class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between" role="navigation" aria-label="Main navigation">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 shrink-0" aria-label="Healthy-E Society home">
+      <img src="brand_assets/HealthyEatsLogo_1024x1024_transparent.png" alt="Healthy Eat's logo" class="h-10 w-10 object-contain rounded-full" style="background:rgba(201,168,76,0.08);" />
+      <span class="heading-md text-white" style="font-size:1.1rem; line-height:1;">Healthy-E <span style="color:#C9A84C;">Society</span></span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#features" class="nav-link">Community</a>
+      <a href="#how"      class="nav-link">How It Works</a>
+      <a href="#app"      class="nav-link">The App</a>
+      <a href="#stories"  class="nav-link">Stories</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <div class="hidden md:flex items-center gap-3">
+      <a href="#join" class="btn-ghost" style="padding:9px 22px; font-size:0.875rem;">Sign In</a>
+      <a href="#join" class="btn-gold" style="padding:9px 22px; font-size:0.875rem;">Join Free</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="hamburger" class="md:hidden text-white p-2 rounded-lg focus-visible:outline-2 focus-visible:outline-white" aria-label="Open menu" aria-expanded="false">
+      <svg id="icon-open"  width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6"  x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden flex-col px-6 pb-6 gap-4 hero-bg">
+    <a href="#features" class="nav-link text-base py-2 border-b border-white/10">Community</a>
+    <a href="#how"      class="nav-link text-base py-2 border-b border-white/10">How It Works</a>
+    <a href="#app"      class="nav-link text-base py-2 border-b border-white/10">The App</a>
+    <a href="#stories"  class="nav-link text-base py-2">Stories</a>
+    <div class="flex gap-3 mt-2">
+      <a href="#join" class="btn-ghost flex-1 justify-center" style="font-size:0.875rem;">Sign In</a>
+      <a href="#join" class="btn-gold flex-1 justify-center"  style="font-size:0.875rem;">Join Free</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="hero-bg grain relative min-h-[92vh] flex items-center" aria-label="Hero">
+
+  <!-- Decorative orbs -->
+  <div class="orb" style="width:520px;height:520px;top:-160px;right:-80px;background:rgba(0,185,180,0.12);"></div>
+  <div class="orb" style="width:360px;height:360px;bottom:-100px;left:-60px;background:rgba(201,168,76,0.10);"></div>
+  <div class="orb" style="width:260px;height:260px;top:40%;right:25%;background:rgba(143,71,244,0.08);"></div>
+
+  <!-- Elegant floating shapes — ported from ElegantShape (framer-motion) -->
+  <div class="es-shapes-container" aria-hidden="true">
+
+    <!-- Shape 1 · Teal · large · top-left · rotate 12° -->
+    <div class="es-wrap es-shape-1">
+      <div class="es-inner"><div class="es-pill"></div></div>
+    </div>
+
+    <!-- Shape 2 · Gold · medium · bottom-right · rotate -15° -->
+    <div class="es-wrap es-shape-2">
+      <div class="es-inner"><div class="es-pill"></div></div>
+    </div>
+
+    <!-- Shape 3 · Purple · small · bottom-left · rotate -8° -->
+    <div class="es-wrap es-shape-3">
+      <div class="es-inner"><div class="es-pill"></div></div>
+    </div>
+
+    <!-- Shape 4 · Orange · small · top-right · rotate 20° -->
+    <div class="es-wrap es-shape-4">
+      <div class="es-inner"><div class="es-pill"></div></div>
+    </div>
+
+    <!-- Shape 5 · Teal · tiny · top-center · rotate -25° -->
+    <div class="es-wrap es-shape-5">
+      <div class="es-inner"><div class="es-pill"></div></div>
+    </div>
+
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 py-24 lg:py-32 relative z-10 w-full">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left copy -->
+      <div class="fade-up">
+        <!-- Badge -->
+        <div class="pill mb-8" style="background:rgba(0,185,180,0.14);color:#33C9C4;border:1px solid rgba(0,185,180,0.25);">
+          <span style="width:6px;height:6px;background:#00B9B4;border-radius:50%;display:inline-block;"></span>
+          Wellness · Nutrition · Community
+        </div>
+
+        <h1 class="heading-xl text-white mb-6" style="font-size:clamp(2.8rem,6vw,5.5rem);">
+          Your Wellness<br />
+          <em style="font-style:italic;color:#C9A84C;">Journey</em><br />
+          Starts Here
+        </h1>
+
+        <p class="body-copy text-white/65 mb-10 max-w-lg" style="font-size:1.05rem;">
+          Join the Healthy-E Society — a thriving community of wellness seekers, nutrition lovers, and healthy-living advocates transforming their lives together, one meal at a time.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4 mb-12">
+          <a href="#join" class="btn-gold" style="font-size:1rem;padding:16px 36px;">
+            Join the Society
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#app" class="btn-ghost" style="font-size:1rem;padding:16px 36px;">
+            Explore the App
+          </a>
+        </div>
+
+        <!-- Trust stats -->
+        <div class="flex flex-wrap gap-8">
+          <div>
+            <div class="stat-num text-white" style="font-size:2rem;">12K+</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.50);letter-spacing:0.06em;text-transform:uppercase;margin-top:2px;">Members</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,0.12);"></div>
+          <div>
+            <div class="stat-num" style="font-size:2rem;color:#C9A84C;">98%</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.50);letter-spacing:0.06em;text-transform:uppercase;margin-top:2px;">Satisfaction</div>
+          </div>
+          <div style="width:1px;background:rgba(255,255,255,0.12);"></div>
+          <div>
+            <div class="stat-num text-white" style="font-size:2rem;">4.9★</div>
+            <div style="font-size:0.8rem;color:rgba(255,255,255,0.50);letter-spacing:0.06em;text-transform:uppercase;margin-top:2px;">App Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right visual -->
+      <div class="relative flex justify-center lg:justify-end fade-up" style="transition-delay:0.15s;">
+        <!-- Glow ring behind logo -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div style="width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.22) 0%,transparent 70%);"></div>
+        </div>
+        <div style="width:340px;height:340px;border-radius:50%;background:rgba(201,168,76,0.06);border:2px solid rgba(201,168,76,0.18);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 0 80px rgba(201,168,76,0.15),inset 0 0 60px rgba(201,168,76,0.04);">
+          <img src="brand_assets/HealthyEatsLogo_1024x1024_transparent.png" alt="Healthy Eat's" style="width:280px;height:280px;object-fit:contain;filter:drop-shadow(0 8px 40px rgba(201,168,76,0.35));" />
+          <!-- Floating badge 1 -->
+          <div style="position:absolute;top:24px;right:-36px;background:#fff;border-radius:14px;padding:10px 16px;box-shadow:0 8px 32px rgba(13,43,43,0.18);border:1px solid rgba(0,185,180,0.12);">
+            <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:0.95rem;color:#00B9B4;">Chan-E AI</div>
+            <div style="font-size:0.72rem;color:#888;margin-top:1px;">Your nutrition guide</div>
+          </div>
+          <!-- Floating badge 2 -->
+          <div style="position:absolute;bottom:32px;left:-44px;background:#fff;border-radius:14px;padding:10px 16px;box-shadow:0 8px 32px rgba(13,43,43,0.18);border:1px solid rgba(201,168,76,0.18);">
+            <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:0.95rem;color:#C9A84C;">Healthy Products</div>
+            <div style="font-size:0.72rem;color:#888;margin-top:1px;">Curated marketplace</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom wave -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none" style="height:60px;">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width:100%;height:100%;display:block;" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F5F5F0"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FEATURES / COMMUNITY PILLARS
+════════════════════════════════════════════════ -->
+<section id="features" class="section-pearl py-24 lg:py-32" aria-label="Community features">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <!-- Header -->
+    <div class="text-center mb-16 fade-up">
+      <div class="pill mb-5 mx-auto" style="background:rgba(0,185,180,0.10);color:#008F8B;border:1px solid rgba(0,185,180,0.20);">
+        <span style="width:6px;height:6px;background:#00B9B4;border-radius:50%;display:inline-block;"></span>
+        Everything You Need
+      </div>
+      <h2 class="heading-lg text-navy mb-5" style="font-size:clamp(2rem,4vw,3.2rem);">
+        Built for Every Step of Your<br /><em style="color:#00B9B4;font-style:italic;">Wellness Journey</em>
+      </h2>
+      <div class="divider-teal mx-auto mb-5"></div>
+      <p class="body-copy text-navy/60 max-w-xl mx-auto">From guided nutrition to curated products and a supportive community, Healthy-E Society has everything you need to thrive.</p>
+    </div>
+
+    <!-- Feature grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Card 1 -->
+      <div class="card p-7 fade-up" style="transition-delay:0.05s;">
+        <div class="icon-wrap mb-5" style="background:rgba(0,185,180,0.10);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00B9B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="heading-md text-navy mb-3" style="font-size:1.1rem;">Thriving Community</h3>
+        <p class="body-copy text-navy/55" style="font-size:0.875rem;">Connect with 12,000+ like-minded wellness warriors sharing recipes, goals, and daily wins.</p>
+        <div style="margin-top:20px;height:3px;width:40px;background:linear-gradient(90deg,#00B9B4,rgba(0,185,180,0.1));border-radius:2px;"></div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card p-7 fade-up" style="transition-delay:0.12s;">
+        <div class="icon-wrap mb-5" style="background:rgba(143,71,244,0.10);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8F47F4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </div>
+        <h3 class="heading-md text-navy mb-3" style="font-size:1.1rem;">Chan-E AI Guide</h3>
+        <p class="body-copy text-navy/55" style="font-size:0.875rem;">Your personal AI nutrition companion. Get instant answers, meal plans, and guidance tailored to you.</p>
+        <div style="margin-top:20px;height:3px;width:40px;background:linear-gradient(90deg,#8F47F4,rgba(143,71,244,0.1));border-radius:2px;"></div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card p-7 fade-up" style="transition-delay:0.19s;">
+        <div class="icon-wrap mb-5" style="background:rgba(201,168,76,0.12);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3 class="heading-md text-navy mb-3" style="font-size:1.1rem;">Healthy Marketplace</h3>
+        <p class="body-copy text-navy/55" style="font-size:0.875rem;">Shop member-curated health products, superfoods, and supplements vetted by nutrition experts.</p>
+        <div style="margin-top:20px;height:3px;width:40px;background:linear-gradient(90deg,#C9A84C,rgba(201,168,76,0.1));border-radius:2px;"></div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card p-7 fade-up" style="transition-delay:0.26s;">
+        <div class="icon-wrap mb-5" style="background:rgba(244,95,95,0.10);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F45F5F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="heading-md text-navy mb-3" style="font-size:1.1rem;">Health Tracking</h3>
+        <p class="body-copy text-navy/55" style="font-size:0.875rem;">Log meals, track macros, sync with health apps, and watch your wellness metrics improve over time.</p>
+        <div style="margin-top:20px;height:3px;width:40px;background:linear-gradient(90deg,#F45F5F,rgba(244,95,95,0.1));border-radius:2px;"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════ -->
+<section id="how" class="section-faint py-24 lg:py-32" aria-label="How it works">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="text-center mb-16 fade-up">
+      <div class="pill mb-5 mx-auto" style="background:rgba(0,185,180,0.12);color:#008F8B;border:1px solid rgba(0,185,180,0.22);">
+        <span style="width:6px;height:6px;background:#00B9B4;border-radius:50%;display:inline-block;"></span>
+        Simple to Start
+      </div>
+      <h2 class="heading-lg text-navy mb-5" style="font-size:clamp(2rem,4vw,3.2rem);">
+        Three Steps to a<br /><em style="color:#C9A84C;font-style:italic;">Healthier You</em>
+      </h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid md:grid-cols-3 gap-10 lg:gap-12 max-w-4xl mx-auto">
+
+      <div class="flex flex-col items-center text-center fade-up" style="transition-delay:0.05s;">
+        <div style="width:56px;height:56px;border-radius:50%;background:#00B9B4;color:#fff;font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,185,180,0.35);margin-bottom:24px;">1</div>
+        <h3 class="heading-md text-navy mb-3" style="font-size:1.1rem;">Create Your Profile</h3>
+        <p class="body-copy text-navy/55" style="font-size:0.875rem;">Sign up for free and set your wellness goals, dietary preferences, and health history in minutes.</p>
+      </div>
+
+      <div class="flex flex-col items-center text-center fade-up" style="transition-delay:0.14s;">
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#E2C97E);color:#0D2B2B;font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(201,168,76,0.35);margin-bottom:24px;">2</div>
+        <h3 class="heading-md text-navy mb-3" style="font-size:1.1rem;">Explore & Connect</h3>
+        <p class="body-copy text-navy/55" style="font-size:0.875rem;">Dive into the community feed, browse healthy products, and chat with Chan-E, your AI nutrition buddy.</p>
+      </div>
+
+      <div class="flex flex-col items-center text-center fade-up" style="transition-delay:0.23s;">
+        <div style="width:56px;height:56px;border-radius:50%;background:#8F47F4;color:#fff;font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(143,71,244,0.35);margin-bottom:24px;">3</div>
+        <h3 class="heading-md text-navy mb-3" style="font-size:1.1rem;">Track Your Progress</h3>
+        <p class="body-copy text-navy/55" style="font-size:0.875rem;">Log meals, celebrate milestones with the community, and watch your wellness journey unfold day by day.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     APP SHOWCASE
+════════════════════════════════════════════════ -->
+<section id="app" class="section-navy py-24 lg:py-32 relative overflow-hidden" aria-label="App showcase">
+
+  <!-- BG orbs -->
+  <div class="orb" style="width:500px;height:500px;top:-100px;left:-120px;background:rgba(0,185,180,0.08);"></div>
+  <div class="orb" style="width:380px;height:380px;bottom:-80px;right:-80px;background:rgba(201,168,76,0.07);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left text -->
+      <div class="fade-up">
+        <div class="pill mb-6" style="background:rgba(0,185,180,0.14);color:#33C9C4;border:1px solid rgba(0,185,180,0.25);">
+          <span style="width:6px;height:6px;background:#00B9B4;border-radius:50%;display:inline-block;"></span>
+          Available on iOS & Android
+        </div>
+        <h2 class="heading-lg text-white mb-6" style="font-size:clamp(2rem,4vw,3.2rem);">
+          Wellness in the<br /><em style="color:#C9A84C;font-style:italic;">Palm of Your Hand</em>
+        </h2>
+        <div class="divider-gold mb-6"></div>
+        <p class="body-copy text-white/60 mb-10 max-w-md" style="font-size:1rem;">
+          The Healthy-E app brings everything together — community feed, AI nutrition chat, product marketplace, and health tracking — all in one beautifully designed experience.
+        </p>
+
+        <!-- App feature list -->
+        <div class="space-y-5 mb-10">
+          <div class="flex items-start gap-4">
+            <div class="icon-wrap shrink-0" style="background:rgba(0,185,180,0.14);width:40px;height:40px;border-radius:10px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00B9B4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold" style="font-size:0.95rem;">Chan-E Charlie AI</div>
+              <div class="text-white/50 body-copy" style="font-size:0.82rem;">Ask anything about nutrition, recipes, or your health goals</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="icon-wrap shrink-0" style="background:rgba(201,168,76,0.12);width:40px;height:40px;border-radius:10px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold" style="font-size:0.95rem;">Curated Products</div>
+              <div class="text-white/50 body-copy" style="font-size:0.82rem;">Discover and shop vetted healthy foods & supplements</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="icon-wrap shrink-0" style="background:rgba(143,71,244,0.12);width:40px;height:40px;border-radius:10px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8F47F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div>
+              <div class="text-white font-semibold" style="font-size:0.95rem;">Social Feed</div>
+              <div class="text-white/50 body-copy" style="font-size:0.82rem;">Share meals, wins, and connect with the community</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download CTA -->
+        <div class="flex flex-wrap gap-3">
+          <a href="#join" class="btn-primary" style="font-size:0.9rem;padding:12px 24px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.29.07 2.18.74 2.94.76 1.12-.21 2.18-.94 3.3-.87 1.4.11 2.46.72 3.16 1.82-2.91 1.71-2.2 5.78.56 6.95-.43 1.04-.98 2.07-2 2.23zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+            App Store
+          </a>
+          <a href="#join" class="btn-ghost" style="font-size:0.9rem;padding:12px 24px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.35.19.76.17 1.14-.06l13.6-7.85-2.97-2.97-11.77 10.88zM.5 1.27C.19 1.61 0 2.12 0 2.77v18.46c0 .65.19 1.16.5 1.5l.08.08 10.33-10.33v-.24L.58 1.19.5 1.27zm20.33 9.98-2.95-1.7-3.25 3.25 3.25 3.25 2.97-1.71c.85-.49.85-1.29 0-1.78l-.02-.01zM4.32.3L17.92 8.14l-2.97 2.97L3.18.23C3.57-.01 4 0 4.32.3z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: mock phone screens -->
+      <div class="relative flex justify-center fade-up" style="transition-delay:0.15s;">
+        <!-- Center phone -->
+        <div style="position:relative;z-index:2;">
+          <div style="width:240px;height:490px;background:#143838;border-radius:36px;border:2px solid rgba(0,185,180,0.3);box-shadow:0 32px 80px rgba(0,0,0,0.55),0 0 0 1px rgba(0,185,180,0.08);overflow:hidden;position:relative;">
+            <!-- Phone status bar -->
+            <div style="background:#0D2B2B;height:40px;display:flex;align-items:center;justify-content:center;padding-top:8px;">
+              <div style="width:70px;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;"></div>
+            </div>
+            <!-- Phone content -->
+            <div style="padding:16px 14px;">
+              <div style="color:rgba(255,255,255,0.5);font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Good morning ✨</div>
+              <div style="font-family:'Playfair Display',serif;color:#fff;font-size:1rem;font-weight:700;margin-bottom:14px;">Healthy-E Society</div>
+              <!-- Today's goal card -->
+              <div style="background:rgba(0,185,180,0.15);border:1px solid rgba(0,185,180,0.25);border-radius:14px;padding:14px;margin-bottom:12px;">
+                <div style="font-size:0.7rem;color:#33C9C4;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">Today's Goal</div>
+                <div style="color:#fff;font-size:0.82rem;font-weight:500;">2,000 kcal · 8 glasses water</div>
+                <!-- Progress bar -->
+                <div style="height:4px;background:rgba(255,255,255,0.1);border-radius:2px;margin-top:10px;overflow:hidden;">
+                  <div style="height:4px;width:62%;background:linear-gradient(90deg,#00B9B4,#33C9C4);border-radius:2px;"></div>
+                </div>
+                <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:4px;">62% complete</div>
+              </div>
+              <!-- Chan-E chat preview -->
+              <div style="background:rgba(143,71,244,0.15);border:1px solid rgba(143,71,244,0.22);border-radius:14px;padding:14px;margin-bottom:12px;">
+                <div style="font-size:0.7rem;color:#AB72F7;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px;">Chan-E AI</div>
+                <div style="font-size:0.78rem;color:rgba(255,255,255,0.75);line-height:1.5;">"Try adding salmon to your lunch today — your omega-3s are a bit low this week!"</div>
+              </div>
+              <!-- Product strip -->
+              <div style="font-size:0.68rem;color:rgba(255,255,255,0.4);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px;">Featured Products</div>
+              <div style="display:flex;gap:8px;">
+                <div style="flex:1;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2);border-radius:10px;height:56px;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:1.4rem;">🥗</span>
+                </div>
+                <div style="flex:1;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2);border-radius:10px;height:56px;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:1.4rem;">🫐</span>
+                </div>
+                <div style="flex:1;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.2);border-radius:10px;height:56px;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-size:1.4rem;">🍵</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Left ghost phone -->
+        <div style="position:absolute;left:-60px;top:40px;opacity:0.4;transform:scale(0.82) rotate(-8deg);transform-origin:top right;z-index:1;">
+          <div style="width:200px;height:410px;background:#143838;border-radius:30px;border:2px solid rgba(0,185,180,0.2);"></div>
+        </div>
+        <!-- Right ghost phone -->
+        <div style="position:absolute;right:-60px;top:40px;opacity:0.4;transform:scale(0.82) rotate(8deg);transform-origin:top left;z-index:1;">
+          <div style="width:200px;height:410px;background:#143838;border-radius:30px;border:2px solid rgba(201,168,76,0.2);"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     STATS BANNER
+════════════════════════════════════════════════ -->
+<section class="section-pearl py-20" aria-label="Community statistics">
+  <div class="max-w-5xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+      <div class="fade-up" style="transition-delay:0.0s;">
+        <div class="stat-num text-teal" style="font-size:2.8rem;">12K+</div>
+        <div class="divider-teal mx-auto my-3"></div>
+        <div style="font-size:0.8rem;color:#0D2B2B;opacity:0.55;letter-spacing:0.07em;text-transform:uppercase;font-weight:500;">Active Members</div>
+      </div>
+
+      <div class="fade-up" style="transition-delay:0.08s;">
+        <div class="stat-num text-gold" style="font-size:2.8rem;">850+</div>
+        <div class="divider-gold mx-auto my-3"></div>
+        <div style="font-size:0.8rem;color:#0D2B2B;opacity:0.55;letter-spacing:0.07em;text-transform:uppercase;font-weight:500;">Healthy Products</div>
+      </div>
+
+      <div class="fade-up" style="transition-delay:0.16s;">
+        <div class="stat-num" style="font-size:2.8rem;color:#8F47F4;">4.9★</div>
+        <div style="height:3px;width:56px;background:linear-gradient(90deg,#8F47F4,rgba(143,71,244,0.1));border-radius:2px;margin:12px auto;"></div>
+        <div style="font-size:0.8rem;color:#0D2B2B;opacity:0.55;letter-spacing:0.07em;text-transform:uppercase;font-weight:500;">App Rating</div>
+      </div>
+
+      <div class="fade-up" style="transition-delay:0.24s;">
+        <div class="stat-num" style="font-size:2.8rem;color:#F45F5F;">98%</div>
+        <div style="height:3px;width:56px;background:linear-gradient(90deg,#F45F5F,rgba(244,95,95,0.1));border-radius:2px;margin:12px auto;"></div>
+        <div style="font-size:0.8rem;color:#0D2B2B;opacity:0.55;letter-spacing:0.07em;text-transform:uppercase;font-weight:500;">Satisfaction Rate</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════════ -->
+<section id="stories" class="section-navy py-24 lg:py-32 relative overflow-hidden" aria-label="Member testimonials">
+
+  <div class="orb" style="width:420px;height:420px;top:-60px;right:10%;background:rgba(0,185,180,0.07);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+
+    <div class="text-center mb-14 fade-up">
+      <div class="pill mb-5 mx-auto" style="background:rgba(0,185,180,0.14);color:#33C9C4;border:1px solid rgba(0,185,180,0.25);">
+        <span style="width:6px;height:6px;background:#00B9B4;border-radius:50%;display:inline-block;"></span>
+        Real Stories
+      </div>
+      <h2 class="heading-lg text-white mb-5" style="font-size:clamp(2rem,4vw,3.2rem);">
+        Members Who<br /><em style="color:#C9A84C;font-style:italic;">Transformed</em> Their Lives
+      </h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- Testimonial 1 -->
+      <div class="testimonial-card fade-up" style="transition-delay:0.05s;">
+        <!-- Stars -->
+        <div class="flex gap-1 mb-4">
+          <span style="color:#C9A84C;font-size:0.9rem;">★★★★★</span>
+        </div>
+        <p class="body-copy text-white/75 mb-6" style="font-size:0.9rem;">"Chan-E became my daily nutrition coach. In 3 months I've lost 18 lbs, have more energy than ever, and actually enjoy eating healthy. This community changed my life."</p>
+        <div class="flex items-center gap-3">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00B9B4,#33C9C4);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:0.9rem;flex-shrink:0;">M</div>
+          <div>
+            <div style="color:#fff;font-weight:600;font-size:0.88rem;">Maya Richardson</div>
+            <div style="color:rgba(255,255,255,0.40);font-size:0.75rem;">Member since 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div class="testimonial-card fade-up" style="transition-delay:0.14s;border-color:rgba(201,168,76,0.22);">
+        <div class="flex gap-1 mb-4">
+          <span style="color:#C9A84C;font-size:0.9rem;">★★★★★</span>
+        </div>
+        <p class="body-copy text-white/75 mb-6" style="font-size:0.9rem;">"The Healthy-E marketplace is incredible. Everything is vetted, the quality is outstanding, and I love that the community actually tests and reviews every product."</p>
+        <div class="flex items-center gap-3">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#E2C97E);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:#0D2B2B;font-size:0.9rem;flex-shrink:0;">D</div>
+          <div>
+            <div style="color:#fff;font-weight:600;font-size:0.88rem;">David Okafor</div>
+            <div style="color:rgba(255,255,255,0.40);font-size:0.75rem;">Member since 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="testimonial-card fade-up" style="transition-delay:0.23s;">
+        <div class="flex gap-1 mb-4">
+          <span style="color:#C9A84C;font-size:0.9rem;">★★★★★</span>
+        </div>
+        <p class="body-copy text-white/75 mb-6" style="font-size:0.9rem;">"I've tried dozens of wellness apps. None compare to Healthy-E. The community support alone keeps me accountable, and the AI guidance is genuinely smart and caring."</p>
+        <div class="flex items-center gap-3">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8F47F4,#AB72F7);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:#fff;font-size:0.9rem;flex-shrink:0;">S</div>
+          <div>
+            <div style="color:#fff;font-weight:600;font-size:0.88rem;">Sophia Chen</div>
+            <div style="color:rgba(255,255,255,0.40);font-size:0.75rem;">Member since 2024</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     JOIN CTA
+════════════════════════════════════════════════ -->
+<section id="join" class="section-pearl py-24 lg:py-32" aria-label="Join the community">
+  <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center">
+
+    <div class="fade-up">
+      <!-- Logo centered -->
+      <div class="flex justify-center mb-8">
+        <div style="width:88px;height:88px;border-radius:50%;background:rgba(201,168,76,0.08);border:2px solid rgba(201,168,76,0.20);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 40px rgba(201,168,76,0.12);">
+          <img src="brand_assets/HealthyEatsLogo_1024x1024_transparent.png" alt="" style="width:72px;height:72px;object-fit:contain;" />
+        </div>
+      </div>
+
+      <div class="pill mb-6 mx-auto" style="background:rgba(0,185,180,0.10);color:#008F8B;border:1px solid rgba(0,185,180,0.22);">
+        <span style="width:6px;height:6px;background:#00B9B4;border-radius:50%;display:inline-block;"></span>
+        Free to Join · No Credit Card
+      </div>
+
+      <h2 class="heading-lg text-navy mb-5" style="font-size:clamp(2rem,4vw,3.4rem);">
+        Ready to Begin Your<br /><em style="color:#00B9B4;font-style:italic;">Wellness Journey?</em>
+      </h2>
+      <p class="body-copy text-navy/55 mb-10 max-w-lg mx-auto" style="font-size:1rem;">
+        Join thousands of members already living healthier, happier lives. Sign up free and get instant access to the community, Chan-E AI, and our healthy marketplace.
+      </p>
+
+      <!-- Email form -->
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8" onsubmit="return false;" aria-label="Join newsletter">
+        <input type="email" placeholder="Your email address" class="input-field input-field-light flex-1" style="background:rgba(13,43,43,0.06);border:1.5px solid rgba(0,185,180,0.22);color:#0D2B2B;" aria-label="Email address" required />
+        <button type="submit" class="btn-gold" style="font-size:0.9rem;padding:14px 28px;white-space:nowrap;">
+          Join Free
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+
+      <p style="font-size:0.78rem;color:#0D2B2B;opacity:0.40;letter-spacing:0.04em;">
+        No spam. Unsubscribe anytime. By joining you agree to our Terms &amp; Privacy Policy.
+      </p>
+
+      <!-- Social proof avatars -->
+      <div class="flex items-center justify-center gap-3 mt-8">
+        <div class="flex -space-x-2">
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#00B9B4,#33C9C4);border:2px solid #F5F5F0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#fff;">A</div>
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#C9A84C,#E2C97E);border:2px solid #F5F5F0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#0D2B2B;">J</div>
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#8F47F4,#AB72F7);border:2px solid #F5F5F0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#fff;">R</div>
+          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#F45F5F,#F78080);border:2px solid #F5F5F0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#fff;">K</div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#0D2B2B;border:2px solid #F5F5F0;display:flex;align-items:center;justify-content:center;font-size:0.68rem;font-weight:700;color:#fff;">+12K</div>
+        </div>
+        <div style="font-size:0.82rem;color:#0D2B2B;opacity:0.55;">Joined by <strong style="color:#00B9B4;opacity:1;">12,000+</strong> members worldwide</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="section-navy py-16" aria-label="Site footer">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+    <div class="grid md:grid-cols-4 gap-10 mb-12">
+
+      <!-- Brand col -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+          <img src="brand_assets/HealthyEatsLogo_1024x1024_transparent.png" alt="Healthy Eat's" style="width:44px;height:44px;object-fit:contain;border-radius:50%;background:rgba(201,168,76,0.08);" />
+          <span class="heading-md text-white" style="font-size:1rem;">Healthy-E <span style="color:#C9A84C;">Society</span></span>
+        </div>
+        <p class="body-copy text-white/45 max-w-xs mb-6" style="font-size:0.875rem;">"Your Wellness Journey Starts Here." — A community built on real nutrition, real support, and real results.</p>
+        <div class="flex gap-3">
+          <!-- Instagram -->
+          <a href="#" class="flex items-center justify-center w-9 h-9 rounded-full" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);color:rgba(255,255,255,0.5);transition:background 0.18s,border-color 0.18s,color 0.18s;" onmouseover="this.style.background='rgba(0,185,180,0.15)';this.style.borderColor='rgba(0,185,180,0.35)';this.style.color='#00B9B4'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.10)';this.style.color='rgba(255,255,255,0.5)'" aria-label="Instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="flex items-center justify-center w-9 h-9 rounded-full" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);color:rgba(255,255,255,0.5);transition:background 0.18s,border-color 0.18s,color 0.18s;" onmouseover="this.style.background='rgba(0,185,180,0.15)';this.style.borderColor='rgba(0,185,180,0.35)';this.style.color='#00B9B4'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.10)';this.style.color='rgba(255,255,255,0.5)'" aria-label="TikTok">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.24 8.24 0 0 0 4.83 1.56V6.79a4.86 4.86 0 0 1-1.07-.1z"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" class="flex items-center justify-center w-9 h-9 rounded-full" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);color:rgba(255,255,255,0.5);transition:background 0.18s,border-color 0.18s,color 0.18s;" onmouseover="this.style.background='rgba(0,185,180,0.15)';this.style.borderColor='rgba(0,185,180,0.35)';this.style.color='#00B9B4'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.10)';this.style.color='rgba(255,255,255,0.5)'" aria-label="X / Twitter">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links col 1 -->
+      <div>
+        <h4 style="color:#C9A84C;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.78rem;letter-spacing:0.10em;text-transform:uppercase;margin-bottom:16px;">Community</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">About Us</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Members</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Events</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Blog</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Podcast</a></li>
+        </ul>
+      </div>
+
+      <!-- Links col 2 -->
+      <div>
+        <h4 style="color:#C9A84C;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.78rem;letter-spacing:0.10em;text-transform:uppercase;margin-bottom:16px;">Support</h4>
+        <ul class="space-y-3">
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">FAQ</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Contact</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Privacy Policy</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Terms of Use</a></li>
+          <li><a href="#" class="nav-link" style="font-size:0.875rem;">Collaborate</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;">
+      <div style="font-size:0.78rem;color:rgba(255,255,255,0.30);">
+        © 2026 Healthy Eat's™. All rights reserved.
+      </div>
+      <div style="font-size:0.78rem;color:rgba(255,255,255,0.30);font-style:italic;">
+        "Your Wellness Journey Starts Here"
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════
+     JS — Mobile menu + Scroll animations
+════════════════════════════════════════════════ -->
+<script>
+  // Mobile menu toggle
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen   = document.getElementById('icon-open');
+  const iconClose  = document.getElementById('icon-close');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    iconOpen.classList.toggle('hidden', isOpen);
+    iconClose.classList.toggle('hidden', !isOpen);
+  });
+
+  // Close mobile menu on nav link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    });
+  });
+
+  // Scroll fade-in with IntersectionObserver
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  fadeEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
