@@ -383,9 +383,114 @@
       filter: blur(80px);
       pointer-events: none;
     }
+
+    /* ── Marquee ticker ── */
+    .ticker-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: linear-gradient(90deg, #C9A84C 0%, #E2C97E 30%, #C9A84C 60%, #E2C97E 100%);
+      overflow: hidden;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      white-space: nowrap;
+      animation: ticker-scroll 28s linear infinite;
+      will-change: transform;
+    }
+    .ticker-wrap:hover .ticker-track { animation-play-state: paused; }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0D2B2B;
+    }
+    .ticker-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #0D2B2B;
+      opacity: 0.45;
+      flex-shrink: 0;
+    }
+
+    /* ── Spinner ── */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ── Join form states ── */
+    #join-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 28px 24px;
+      background: rgba(0,185,180,0.08);
+      border: 1px solid rgba(0,185,180,0.30);
+      border-radius: 20px;
+      max-width: 420px;
+      margin: 0 auto 24px;
+    }
+    #join-error {
+      display: none;
+      color: #D94444;
+      font-size: 0.82rem;
+      margin-top: 8px;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
+
+<!-- ════════════════════════════════════════════════
+     STORE TICKER
+════════════════════════════════════════════════ -->
+<div class="ticker-wrap" role="marquee" aria-label="Visit the Healthy-E Store">
+  <div class="ticker-track">
+    <!-- Two identical sets so the loop is seamless -->
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>🛍 Visit the E-Store</span><span class="ticker-dot"></span><span>healthy-e.store</span><span class="ticker-dot"></span><span>Shop Curated Wellness Products</span>
+    </a>
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>✦ Free Shipping Available</span><span class="ticker-dot"></span><span>850+ Healthy Products</span><span class="ticker-dot"></span><span>Community Vetted</span>
+    </a>
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>🛍 Visit the E-Store</span><span class="ticker-dot"></span><span>healthy-e.store</span><span class="ticker-dot"></span><span>Shop Curated Wellness Products</span>
+    </a>
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>✦ Free Shipping Available</span><span class="ticker-dot"></span><span>850+ Healthy Products</span><span class="ticker-dot"></span><span>Community Vetted</span>
+    </a>
+    <!-- Duplicate for seamless loop -->
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>🛍 Visit the E-Store</span><span class="ticker-dot"></span><span>healthy-e.store</span><span class="ticker-dot"></span><span>Shop Curated Wellness Products</span>
+    </a>
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>✦ Free Shipping Available</span><span class="ticker-dot"></span><span>850+ Healthy Products</span><span class="ticker-dot"></span><span>Community Vetted</span>
+    </a>
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>🛍 Visit the E-Store</span><span class="ticker-dot"></span><span>healthy-e.store</span><span class="ticker-dot"></span><span>Shop Curated Wellness Products</span>
+    </a>
+    <a href="https://healthy-e.store" target="_blank" rel="noopener noreferrer" class="ticker-item" style="text-decoration:none;">
+      <span>✦ Free Shipping Available</span><span class="ticker-dot"></span><span>850+ Healthy Products</span><span class="ticker-dot"></span><span>Community Vetted</span>
+    </a>
+  </div>
+</div>
+
 
 <!-- ════════════════════════════════════════════════
      NAVIGATION
@@ -1002,19 +1107,34 @@
       </p>
 
       <!-- Email form -->
-      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-8"
+      <form id="join-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-2"
             action="https://formspree.io/f/mojpgaoj"
             method="POST"
-            aria-label="Join newsletter">
+            aria-label="Join newsletter"
+            novalidate>
         <input type="hidden" name="_subject" value="Healthy-E web sub" />
-        <input type="email" name="email" placeholder="Your email address" class="input-field input-field-light flex-1" style="background:rgba(13,43,43,0.06);border:1.5px solid rgba(0,185,180,0.22);color:#0D2B2B;" aria-label="Email address" required />
-        <button type="submit" class="btn-gold" style="font-size:0.9rem;padding:14px 28px;white-space:nowrap;">
-          Join Free
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <input type="email" id="join-email" name="email" placeholder="Your email address"
+               class="input-field input-field-light flex-1"
+               style="background:rgba(13,43,43,0.06);border:1.5px solid rgba(0,185,180,0.28);color:#0D2B2B;font-size:0.95rem;"
+               aria-label="Email address" required />
+        <button id="join-btn" type="submit" class="btn-gold" style="font-size:0.9rem;padding:14px 28px;white-space:nowrap;">
+          <span id="join-btn-label">Join Free</span>
+          <svg id="join-btn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg id="join-btn-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none;animation:spin 0.7s linear infinite;"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </button>
       </form>
+      <p id="join-error" style="font-size:0.82rem;color:#D94444;margin-bottom:8px;font-weight:500;"></p>
 
-      <p style="font-size:0.78rem;color:#0D2B2B;opacity:0.40;letter-spacing:0.04em;">
+      <!-- Success state (hidden until submit) -->
+      <div id="join-success" style="display:none;flex-direction:column;align-items:center;gap:10px;padding:24px;background:rgba(0,185,180,0.08);border:1px solid rgba(0,185,180,0.30);border-radius:20px;max-width:420px;margin:0 auto 8px;">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(0,185,180,0.15);display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00B9B4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div style="font-family:'Playfair Display',serif;font-weight:700;color:#0D2B2B;font-size:1.1rem;">You're in! Welcome 🎉</div>
+        <div style="font-size:0.85rem;color:#0D2B2B;opacity:0.60;text-align:center;line-height:1.6;">Check your inbox — your Healthy-E welcome is on its way.</div>
+      </div>
+
+      <p id="join-disclaimer" style="font-size:0.78rem;color:#0D2B2B;opacity:0.40;letter-spacing:0.04em;">
         No spam. Unsubscribe anytime. By joining you agree to our Terms &amp; Privacy Policy.
       </p>
 
@@ -1146,6 +1266,56 @@
   }, { threshold: 0.12 });
 
   fadeEls.forEach(el => io.observe(el));
+
+  // ── Join form — AJAX submit to Formspree ──
+  const joinForm       = document.getElementById('join-form');
+  const joinBtn        = document.getElementById('join-btn');
+  const joinBtnLabel   = document.getElementById('join-btn-label');
+  const joinBtnArrow   = document.getElementById('join-btn-arrow');
+  const joinBtnSpinner = document.getElementById('join-btn-spinner');
+  const joinSuccess    = document.getElementById('join-success');
+  const joinError      = document.getElementById('join-error');
+  const joinDisclaimer = document.getElementById('join-disclaimer');
+
+  joinForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('join-email').value.trim();
+    if (!email) return;
+
+    // Loading state
+    joinBtnLabel.textContent = 'Joining…';
+    joinBtnArrow.style.display = 'none';
+    joinBtnSpinner.style.display = 'inline';
+    joinBtn.disabled = true;
+    joinError.style.display = 'none';
+
+    try {
+      const res = await fetch(joinForm.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, _subject: 'Healthy-E web sub' }),
+      });
+
+      if (res.ok) {
+        // Success — swap form for confirmation
+        joinForm.style.display = 'none';
+        joinDisclaimer.style.display = 'none';
+        joinSuccess.style.display = 'flex';
+      } else {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Submission failed');
+      }
+    } catch (err) {
+      // Reset button, show error
+      joinBtnLabel.textContent = 'Join Free';
+      joinBtnArrow.style.display = 'inline';
+      joinBtnSpinner.style.display = 'none';
+      joinBtn.disabled = false;
+      joinError.textContent = 'Something went wrong — please try again.';
+      joinError.style.display = 'block';
+    }
+  });
 </script>
 
 </body>
