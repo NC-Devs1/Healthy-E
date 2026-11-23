@@ -4,3 +4,4 @@ nul
 temporary screenshots/
 screenshot.mjs
 *.log
+.vercel

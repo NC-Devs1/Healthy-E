@@ -1,0 +1,14 @@
+index.backup-*.html
+*.rtf
+*.pdf
+HE_Brand_Guidelines.png
+brand_assets/HE_Brand_Guidelines.png
+temporary screenshots
+node_modules
+nul
+screenshot.mjs
+serve.mjs
+.DS_Store
+.github
+package.json
+package-lock.json
